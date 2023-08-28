@@ -1,31 +1,44 @@
 import { useEffect } from 'react'
-import useStore from './store/channelStore'
 import { observer } from 'mobx-react-lite'
 
+import { useStore } from './store'
+
 function App() {
+  // 解构赋值到store实例就ok 防止破环响应式
+  const rootStore = useStore()
+  // console.log(rootStore) // !!打印看看
 
   useEffect(() => {
-    useStore.setChannelList()
+    rootStore.channelStore.setChannelList()
   }, [])
 
   return (
     <div className="App">
-      {
-        useStore.channelList.map((item) => (
-          <li  key={item.id}>
-            {item.name}
-          </li>
-        ))
-      }
+      <>
+        <div>
+          <button onClick={ () => rootStore.counterStore.addCount() }>
+            { rootStore.counterStore.count }
+          </button>
+        </div>
+        <div>
+          { rootStore.computedStore.filterList.join('-') }
+          <button onClick={ () => rootStore.computedStore.pushList() }>
+            push
+          </button>
+        </div>
+        <div>
+          {
+            rootStore.channelStore.channelList.map((item) => (
+              <li  key={item.id}>
+                {item.name}
+              </li>
+            ))
+          }
+        </div>
+        </>
     </div>
   )
 }
 
 // 包裹组件让视图响应数据变化
 export default observer(App)
-
-// 实现步骤
-// 1. 在组件中导入counterStore实例对象
-// 2. 在组件中使用storeStore实例对象中的数据
-// 3. 通过事件调用修改数据的方法修改store中的数据
-// 4. 让组件响应数据变化
