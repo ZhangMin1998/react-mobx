@@ -24,6 +24,7 @@ class RootStore {
 // 实例化根store注入context
 const rootStore = new RootStore()
 
+// 使用react context机制完成统一方法封装
 // context机制的数据查找链
 // Provide value = {传递的数据}
 // 查找机制：
