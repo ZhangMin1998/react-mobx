@@ -1,22 +1,22 @@
-import { useEffect } from 'react'
-import useStore from './store/channelStore'
+// 导入counterStore
+import counter from './store/counter'
+import computed from './store/computed'
+
+// 导入observer方法 (中间件 连接obx react 完成响应式)
 import { observer } from 'mobx-react-lite'
 
 function App() {
-
-  useEffect(() => {
-    useStore.setChannelList()
-  }, [])
-
   return (
     <div className="App">
-      {
-        useStore.channelList.map((item) => (
-          <li  key={item.id}>
-            {item.name}
-          </li>
-        ))
-      }
+      <button onClick={ () => counter.addCount() }>
+      { counter.count }
+      </button>
+      <div>
+        { computed.filterList.join('-') }
+        <button onClick={ () => computed.pushList() }>
+          push
+        </button>
+      </div>
     </div>
   )
 }
