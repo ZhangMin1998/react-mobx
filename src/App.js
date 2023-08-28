@@ -21,7 +21,9 @@ function App() {
           </button>
         </div>
         <div>
+          <p>
           { rootStore.computedStore.filterList.join('-') }
+          </p>
           <button onClick={ () => rootStore.computedStore.pushList() }>
             push
           </button>
