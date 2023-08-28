@@ -1,5 +1,6 @@
 // 导入counterStore
 import counter from './store/counter'
+import computed from './store/computed'
 
 // 导入observer方法 (中间件 连接obx react 完成响应式)
 import { observer } from 'mobx-react-lite'
@@ -10,6 +11,12 @@ function App() {
       <button onClick={ () => counter.addCount() }>
       { counter.count }
       </button>
+      <div>
+        { computed.filterList.join('-') }
+        <button onClick={ () => computed.pushList() }>
+          push
+        </button>
+      </div>
     </div>
   )
 }
