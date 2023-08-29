@@ -1,7 +1,9 @@
 import { useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
-
 import { useStore } from './store'
+
+import Bar from './components/Bar'
+import Foo from './components/Foo'
 
 function App() {
   // 解构赋值到store实例就ok 防止破环响应式
@@ -37,6 +39,8 @@ function App() {
             ))
           }
         </div>
+        <Bar/>
+        <Foo/>
         </>
     </div>
   )
