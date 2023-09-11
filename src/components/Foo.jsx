@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react-lite'
-import { useStore } from '../store'
+// import { useStore } from '../store'
+import useStore from '../store'
 
 const Foo = () => {
   const rootStore = useStore()

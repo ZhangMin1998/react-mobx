@@ -36,5 +36,6 @@ const context = React.createContext(rootStore)
 // 调用useStore() -> rootStore
 const useStore = () => React.useContext(context)
 
-export { useStore }
+// export { useStore }
+export default useStore
 

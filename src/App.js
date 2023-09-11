@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
-import { useStore } from './store'
+// import { useStore } from './store'
+import useStore from './store'
 
 import Bar from './components/Bar'
 import Foo from './components/Foo'
